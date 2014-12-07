@@ -6,7 +6,7 @@
   "authors": [
     "Aron Kornhall <aron@kornhall.se>"
   ],
-  "description": "Fast, atomic persistent storage layer based on localstorage",
+  "description": "Fast, atomic persistent storage layer on top of localstorage",
   "moduleType": [
     "amd",
     "globals",
@@ -21,6 +21,9 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "demo",
+    "index.js",
+    "lib",
+    "Gruntfile"
   ]
 }
