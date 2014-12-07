@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Barn Demo</title>
+</head>
+<body>
+<script src="../dist/barn.min.js"></script>
+<script>
+  var barn = new Barn(localStorage);
+
+  barn.set('key', 'val');
+  console.log(barn.get('key')); // val
+
+  barn.lpush('list', 'val1');
+  barn.lpush('list', 'val2');
+  console.log(barn.rpop('list')); // val1
+  console.log(barn.rpop('list')); // val2
+
+  barn.sadd('set', 'val1');
+  barn.sadd('set', 'val2');
+  barn.sadd('set', 'val3');
+  console.log(barn.smembers('set')); // ['val1', 'val2', 'val3']
+  barn.srem('set', 'val3');
+  console.log(barn.smembers('set')); // ['val1', 'val2']
+  barn.condense();
+</script>
+</body>
+</html>
+
