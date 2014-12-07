@@ -1,7 +1,7 @@
 {
   "name": "barn",
   "version": "0.0.1",
-  "description": "Fast, atomic persistent storage layer based on localstorage",
+  "description": "Fast, atomic persistent storage layer on top of localstorage",
   "directories": {
     "test": "test"
   },
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/arokor/pernr.git"
+    "url": "git://github.com/arokor/barn.git"
   },
   "keywords": [
     "persistence"
