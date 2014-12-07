@@ -6,23 +6,22 @@ the browser window, or and error is thrown and not handled barn keeps a consiste
 state.
 
 ##Usage
+    var barn = new Barn(localStorage);
 
-  var barn = new Barn(localStorage);
+    barn.set('key', 'val');
+    console.log(barn.get('key')); // val
 
-  barn.set('key', 'val');
-  console.log(barn.get('key')); // val
+    barn.lpush('list', 'val1');
+    barn.lpush('list', 'val2');
+    console.log(barn.rpop('list')); // val1
+    console.log(barn.rpop('list')); // val2
 
-  barn.lpush('list', 'val1');
-  barn.lpush('list', 'val2');
-  console.log(barn.rpop('list')); // val1
-  console.log(barn.rpop('list')); // val2
-
-  barn.sadd('set', 'val1');
-  barn.sadd('set', 'val2');
-  barn.sadd('set', 'val3');
-  console.log(barn.smembers('set')); // ['val1', 'val2', 'val3']
-  barn.srem('set', 'val3');
-  console.log(barn.smembers('set')); // ['val1', 'val2']
+    barn.sadd('set', 'val1');
+    barn.sadd('set', 'val2');
+    barn.sadd('set', 'val3');
+    console.log(barn.smembers('set')); // ['val1', 'val2', 'val3']
+    barn.srem('set', 'val3');
+    console.log(barn.smembers('set')); // ['val1', 'val2']
 
 Follow [@AronKornhall](http://twitter.com/AronKornhall) for news and updates
 regarding this library.
@@ -119,7 +118,7 @@ remove value val from set setKey
 
 Condense the local storage representation of this Barn instance to save space
 and speeds up initialization. This is done automatically from time to time so
-normally there is no need to call this method.
+normally there is no need to call this method explicitly.
 
 ---------
 
