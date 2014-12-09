@@ -1,7 +1,7 @@
 #Barn
 
 Barn provides a redis like API on top of localStorage (or any other storage
-implementing the web storage API. Operations are atomic so even if a users closes
+implementing the web storage API). Operations are atomic so even if a users closes
 the browser window, or and error is thrown and not handled barn keeps a consistent
 state.
 
