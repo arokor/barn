@@ -188,6 +188,24 @@ describe('barn', function(){
         expect(barn.get('key')).to.equal('val');
       });
     });
+    describe('SISMEMBER', function(){
+      it('SISMEMBER', function(){
+        expect(barn.sismember('key', 'val1')).to.be.false;
+        barn.sadd('key', 'val1');
+        expect(barn.sismember('key', 'val1')).to.be.true;
+        expect(barn.sismember('key', 'val2')).to.be.false;
+        barn.sadd('key', 'val2');
+        expect(barn.sismember('key', 'val2')).to.be.true;
+      });
+      it('SMEMBERS on non existent set', function(){
+        expect(barn.sismember('key', 'val')).to.be.false;
+      });
+      it('SMEMBERS on string val', function(){
+        barn.set('key', 'val');
+        expect(function(){barn.sismebers('key', 'val');}).to.throw(TypeError);
+        expect(barn.get('key')).to.equal('val');
+      });
+    });
   });
   describe('Persistence', function(){
     it('set-get', function(){

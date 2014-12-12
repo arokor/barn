@@ -37,6 +37,9 @@ _.extend(API.prototype, {
   smembers: function(key){
     return this.barn.execCmd('SMEMBERS', key);
   },
+  sismember: function(key, val){
+    return this.barn.execCmd('SISMEMBER', key, val);
+  },
   srem: function(key, val){
     return this.barn.execCmd('SREM', key, val);
   },
