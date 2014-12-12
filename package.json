@@ -1,6 +1,6 @@
 {
   "name": "barn",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fast, atomic persistent storage layer on top of localstorage",
   "directories": {
     "test": "test"
