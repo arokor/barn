@@ -38,6 +38,9 @@ _.extend(API.prototype, {
   smembers: function(key){
     return this.barn.execCmd('SMEMBERS', key);
   },
+  sismember: function(key, val){
+    return this.barn.execCmd('SISMEMBER', key, val);
+  },
   srem: function(key, val){
     return this.barn.execCmd('SREM', key, val);
   },
@@ -148,6 +151,13 @@ function Barn(namespace, storage, opts){
           ret = Object.keys(set);
         }
         return ret;
+      },
+      mutating: false
+    },
+    SISMEMBER: {
+      fn: function(key, val){
+        var set = _this._getValExpectingType(key, 'set');
+        return !!(set && set[val]);
       },
       mutating: false
     },
