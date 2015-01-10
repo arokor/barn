@@ -131,6 +131,52 @@ describe('barn', function(){
         expect(barn.get('key')).to.equal('val');
       });
     });
+    describe('LRANGE', function(){
+      beforeEach(function(){
+        barn.rpush('key', 'val1');
+        barn.rpush('key', 'val2');
+        barn.rpush('key', 'val3');
+      });
+      it('first', function(){
+        var range = barn.lrange('key', 0, 0);
+        expect(range.length).to.equal(1);
+        expect(range[0]).to.equal('val1');
+      });
+      it('out of range start index', function(){
+        var range = barn.lrange('key', -3, 2);
+        expect(range.length).to.equal(3);
+        expect(range[0]).to.equal('val1');
+        expect(range[1]).to.equal('val2');
+        expect(range[2]).to.equal('val3');
+      });
+      it('out of range end index', function(){
+        var range = barn.lrange('key', 0, 10);
+        expect(range.length).to.equal(3);
+        expect(range[0]).to.equal('val1');
+        expect(range[1]).to.equal('val2');
+        expect(range[2]).to.equal('val3');
+      });
+      it('completely out of range', function(){
+        var range = barn.lrange('key', 3, 10);
+        expect(range.length).to.equal(0);
+      });
+      it('negative end index', function(){
+        var range = barn.lrange('key', 0, -1);
+        expect(range.length).to.equal(3);
+        expect(range[0]).to.equal('val1');
+        expect(range[1]).to.equal('val2');
+        expect(range[2]).to.equal('val3');
+        range = barn.lrange('key', 0, -2);
+        expect(range.length).to.equal(2);
+        expect(range[0]).to.equal('val1');
+        expect(range[1]).to.equal('val2');
+      });
+      it('LRANGE on string val', function(){
+        barn.set('key', 'val');
+        expect(function(){barn.lrange('key', 0, 0);}).to.throw(TypeError);
+        expect(barn.get('key')).to.equal('val');
+      });
+    });
   });
   describe('Set operations', function(){
     describe('SADD', function(){
