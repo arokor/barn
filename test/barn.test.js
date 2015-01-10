@@ -131,6 +131,8 @@ describe('barn', function(){
         expect(barn.get('key')).to.equal('val');
       });
     });
+  });
+  describe('Set operations', function(){
     describe('SADD', function(){
       it('SADD', function(){
         var numAdded = barn.sadd('key', 'val');
