@@ -98,6 +98,18 @@ push the value val to the right end of list listKey
 
 ---------
 
+###Barn##llen(listKey)
+
+get the length of a list
+
+---------
+
+###Barn##lrange(listKey, start, end)
+
+get a range of elements from a list
+
+---------
+
 ###Barn##sadd(setKey, val)
 
 add value val to set setKey
