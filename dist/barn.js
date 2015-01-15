@@ -32,6 +32,9 @@ _.extend(API.prototype, {
   rpush: function(key, val){
     return this.barn.execCmd('RPUSH', key, val);
   },
+  llen: function(key){
+    return this.barn.execCmd('LLEN', key);
+  },
   lrange: function(key, start, end){
     return this.barn.execCmd('LRANGE', key, start, end);
   },
@@ -131,6 +134,13 @@ function Barn(namespace, storage, opts){
           ret = list.pop();
         }
         return ret;
+      },
+      mutating: false
+    },
+    LLEN: {
+      fn: function(key){
+        var list = _this._getValExpectingType(key, 'list');
+        return list ? list.length : 0;
       },
       mutating: false
     },
