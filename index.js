@@ -31,6 +31,9 @@ _.extend(API.prototype, {
   rpush: function(key, val){
     return this.barn.execCmd('RPUSH', key, val);
   },
+  llen: function(key){
+    return this.barn.execCmd('LLEN', key);
+  },
   lrange: function(key, start, end){
     return this.barn.execCmd('LRANGE', key, start, end);
   },

@@ -131,6 +131,25 @@ describe('barn', function(){
         expect(barn.get('key')).to.equal('val');
       });
     });
+    describe('LLEN', function(){
+      it('LLEN matches length returned from push', function(){
+        var len;
+        len = barn.rpush('key', 'val1');
+        expect(barn.llen('key')).to.equal(len);
+        len = barn.rpush('key', 'val2');
+        expect(barn.llen('key')).to.equal(len);
+        len = barn.rpush('key', 'val3');
+        expect(barn.llen('key')).to.equal(len);
+      });
+      it('LLEN on non-existing list', function(){
+        expect(barn.llen('noexist')).to.equal(0);
+      });
+      it('LLEN on string val', function(){
+        barn.set('key', 'val');
+        expect(function(){barn.llen('key');}).to.throw(TypeError);
+        expect(barn.get('key')).to.equal('val');
+      });
+    });
     describe('LRANGE', function(){
       beforeEach(function(){
         barn.rpush('key', 'val1');
