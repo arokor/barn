@@ -282,6 +282,24 @@ describe('barn', function(){
       expect(barn2.get('key')).to.equal('val');
       expect(barn2.get('key2')).to.equal('val2');
     });
+    it('lpush-rpop', function(){
+      barn.lpush('key', 'val');
+      barn.lpush('key', 'val2');
+      expect(barn.llen('key')).to.equal(2);
+      barn.rpop('key');
+      expect(barn.llen('key')).to.equal(1);
+      var barn2 = new Barn(storage);
+      expect(barn2.llen('key')).to.equal(1);
+    });
+    it('rpush-lpop', function(){
+      barn.rpush('key', 'val');
+      barn.rpush('key', 'val2');
+      expect(barn.llen('key')).to.equal(2);
+      barn.lpop('key');
+      expect(barn.llen('key')).to.equal(1);
+      var barn2 = new Barn(storage);
+      expect(barn2.llen('key')).to.equal(1);
+    });
     describe('Condensation', function(){
       it('should have the same db after condense', function(){
         barn.set('key', 'val');
