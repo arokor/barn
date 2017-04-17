@@ -1,4 +1,4 @@
-#Barn
+# Barn
 
 [![Build Status](https://travis-ci.org/arokor/barn.svg?branch=master)](https://travis-ci.org/arokor/barn)
 
@@ -7,7 +7,7 @@ implementing the web storage API). Operations are atomic so even if a users clos
 the browser window, or and error is thrown and not handled barn keeps a consistent
 state.
 
-##Usage
+## Usage
     var barn = new Barn(localStorage);
 
     barn.set('key', 'val');
@@ -28,7 +28,7 @@ state.
 Follow [@AronKornhall](http://twitter.com/AronKornhall) for news and updates
 regarding this library.
 
-##Install
+## Install
 Browserify
 
     npm install barn
@@ -38,12 +38,12 @@ Browser
     bower install barn
     or just download dist/barn.js
 
-##Test
+## Test
     npm test
 
-##Reference
+## Reference
 
-###Barn({namespace}, storage)
+### Barn({namespace}, storage)
 
 Constructor to create a new Barn instance
 
@@ -56,79 +56,79 @@ __Arguments__
 
 ---------
 
-###Barn##get(key)
+### Barn##get(key)
 
 get the store value for key
 
 ---------
 
-###Barn##set(key, val)
+### Barn##set(key, val)
 
 set the store value for key
 
 ---------
 
-###Barn##del(key)
+### Barn##del(key)
 
 delete the store value for key
 
 ---------
 
-###Barn##lpop(listKey)
+### Barn##lpop(listKey)
 
 pop the leftmost value from list listKey
 
 ---------
 
-###Barn##lpush(listKey, val)
+### Barn##lpush(listKey, val)
 
 push the value val to the left end of list listKey
 
 ---------
 
-###Barn##rpop(listKey)
+### Barn##rpop(listKey)
 
 pop the rightmost value from list listKey
 
 ---------
 
-###Barn##rpush(listKey, val)
+### Barn##rpush(listKey, val)
 
 push the value val to the right end of list listKey
 
 ---------
 
-###Barn##llen(listKey)
+### Barn##llen(listKey)
 
 get the length of a list
 
 ---------
 
-###Barn##lrange(listKey, start, end)
+### Barn##lrange(listKey, start, end)
 
 get a range of elements from a list
 
 ---------
 
-###Barn##sadd(setKey, val)
+### Barn##sadd(setKey, val)
 
 add value val to set setKey
 
 ---------
 
-###Barn##smembers(setKey)
+### Barn##smembers(setKey)
 
 return an array containing all the items in set setKey
 
 ---------
 
-###Barn##srem(setKey, val)
+### Barn##srem(setKey, val)
 
 remove value val from set setKey
 
 ---------
 
-###Barn##condense()
+### Barn##condense()
 
 Condense the local storage representation of this Barn instance to save space
 and speeds up initialization. This is done automatically from time to time so
@@ -136,7 +136,7 @@ normally there is no need to call this method explicitly.
 
 ---------
 
-##License 
+## License 
 
 (The MIT License)
 
