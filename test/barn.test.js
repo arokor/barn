@@ -330,6 +330,19 @@ describe('barn', function(){
         barn.set('keyX', 'valX');
         expect(storage.length).to.equal(1 + 1);
       });
+      it('should autocondense when maxKeys is overridden and reached', function(){
+        const max = 5;
+        var s = createMockStorage();
+        barn = new Barn('test', s, { maxKeys: max });
+        expect(s.length).to.equal(1);
+
+        for(var i=0; i<max; i++){
+          barn.set('key'+i, 'val'+i);
+        }
+        expect(s.length).to.equal(5 + 1);
+        barn.set('keyX', 'valX');
+        expect(s.length).to.equal(1 + 1);
+      });
     });
   });
 });

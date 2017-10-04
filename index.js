@@ -1,12 +1,13 @@
 var _ = require('underscore');
 var Barn = require('./lib/barn');
 
-function API(namespace, storage){
+function API(namespace, storage, opts){
+  if (!opts) opts = {};
   if(!storage){
     storage = namespace;
     namespace = 'BARN';
   }
-  this.barn = new Barn(namespace, storage);
+  this.barn = new Barn(namespace, storage, opts);
 }
 
 _.extend(API.prototype, {
