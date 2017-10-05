@@ -1,7 +1,7 @@
 {
   "name": "barn",
   "main": "dist/barn.min.js",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/arokor/barn",
   "authors": [
     "Aron Kornhall <aron@kornhall.se>"
